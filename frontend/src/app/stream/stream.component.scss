@@ -1,0 +1,27 @@
+.chat-window {
+  border: 1px solid #dee2e6;
+
+  border-radius: 0.1rem;
+}
+
+.chat-header {
+  padding: 1rem;
+}
+
+.chat-input {
+}
+
+.chat-heading-text {
+  display: inline;
+}
+
+.btn-stat {
+  display: inline;
+  color: #ffffff !important;
+  float: right;
+}
+
+.chat-container {
+  max-height: calc(55vh + 10px);
+  overflow: auto;
+}

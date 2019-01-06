@@ -1,0 +1,34 @@
+<main role="main">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h5 class="heading-text" translate>STREAM_STAT</h5>
+        <a class="btn btn-primary btn-sm btn-back" [routerLink]="['/stream', streamId]" translate
+          >ACTION_BACK_TO_STREAM</a
+        >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <app-loader [isLoading]="loading"></app-loader>
+        <div class="table-responsive">
+          <ngx-datatable
+            *ngIf="streamStats"
+            class="bootstrap"
+            [rows]="streamStats"
+            [columns]="columns"
+            [externalSorting]="true"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="32"
+            [rowHeight]="'auto'"
+            [loadingIndicator]="loading"
+            (sort)="onSort($event)"
+          >
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

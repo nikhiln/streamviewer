@@ -1,0 +1,21 @@
+{
+  "APP_NAME": "Streamviwer",
+  "Home": "Home",
+  "Logged in as": "Logged in as",
+  "Login": "Login",
+  "Logout": "Logout",
+  "Version": "Version",
+  "SIGN_IN_GOOGLE": "Sign in using Google",
+  "TOP_YOUTUBE_LIVE_STREAMS": "Top Youtube Live Streaming",
+  "LIVE_CHAT": "Live Chat",
+  "STREAM_STAT": "Stream Statistics",
+  "STREAM_CHAT_ARCHIVE": "All Chat Messages",
+  "ACTION_VIEW": "View",
+  "ACTION_SEND": "Send",
+  "ACTION_SEARCH": "Search",
+  "ACTION_STAT": "View Stats",
+  "ACTION_VIEW_CHAT_HISTORY": "View All",
+  "ACTION_BACK_TO_STREAM": "Back to Streaming",
+  "TABLE_HEADER_SENDER": "Sender",
+  "TABLE_HEADER_TOTAL_MESSAGES": "Total Chat Messages Sent"
+}

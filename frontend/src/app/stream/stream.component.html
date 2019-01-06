@@ -1,0 +1,84 @@
+<main role="main">
+  <div class="container-fluid">
+    <div class="row"><div class="col-md-8"></div></div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            class="embed-responsive-item"
+            [src]="streamEmbdedUrl"
+            allowfullscreen
+            *ngIf="streamEmbdedUrl"
+            allow="autoplay"
+          ></iframe>
+          <!--  -->
+        </div>
+      </div>
+      <!-- live stream -->
+
+      <div class="col-md-4">
+        <div class="chat-window">
+          <div class="row">
+            <div class="col">
+              <div class="bg-light chat-header">
+                <h5 class="chat-heading-text" translate>LIVE_CHAT</h5>
+                <a class="btn btn-primary btn-sm btn-stat" [routerLink]="['/stream-stats', streamId]" translate
+                  >ACTION_STAT</a
+                >
+                <a
+                  class="btn btn-primary btn-sm btn-stat mr-2"
+                  [routerLink]="['/stream-chat-history', streamId]"
+                  translate
+                  >ACTION_VIEW_CHAT_HISTORY</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- chat header ends -->
+
+          <div class="row chat-container">
+            <div class="col" #chatContainer>
+              <div *ngIf="messages && messages.length">
+                <div class="row message" *ngFor="let message of messages; let i = index">
+                  <div class="col">
+                    <div class="pt-2 pb-2 pl-2">
+                      <b>{{ message.sender }}</b
+                      >: {{ message.message }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- chat text -->
+
+          <div class="row chat-input pt-3 pl-3 pr-3 pb-3">
+            <div class="col">
+              <form class="form-inline" name="chat-form" #chatForm="ngForm" (ngSubmit)="onSubmit()">
+                <textarea
+                  class="form-control mb-2 mr-sm-2"
+                  id="chat-message"
+                  name="chat-message"
+                  placeholder="Your message.."
+                  rows="2"
+                  cols="60"
+                  required
+                  [(ngModel)]="newMessage"
+                ></textarea>
+                <button
+                  type="submit"
+                  class="btn btn-primary mb-2"
+                  [disabled]="!isChatReady || !chatForm.form.valid"
+                  translate
+                >
+                  ACTION_SEND
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- chat input ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,54 @@
+<main role="main">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h5 class="heading-text" translate>STREAM_CHAT_ARCHIVE</h5>
+        <a class="btn btn-primary btn-sm btn-back" [routerLink]="['/stream', streamId]" translate
+          >ACTION_BACK_TO_STREAM</a
+        >
+      </div>
+    </div>
+
+    <div class="row chat-input pt-3 pl-3 pr-3 pb-3">
+      <div class="col">
+        <form class="form-inline" name="chat-search-form" #chatForm="ngForm" (ngSubmit)="getAllChatMessages()">
+          <input
+            type="text"
+            class="form-control mb-2 mr-sm-2"
+            id="chat-message"
+            name="chat-message"
+            placeholder="Enter sender name"
+            required
+            [(ngModel)]="searchQueryUser"
+          />
+          <button type="submit" class="btn btn-primary mb-2" [disabled]="!chatForm.form.valid" translate>
+            ACTION_SEARCH
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- chat input ends -->
+
+    <div class="row">
+      <div class="col">
+        <app-loader [isLoading]="loading"></app-loader>
+        <div class="table-responsive">
+          <ngx-datatable
+            *ngIf="chatMessages"
+            class="bootstrap"
+            [rows]="chatMessages"
+            [columns]="columns"
+            [externalSorting]="true"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="32"
+            [rowHeight]="'auto'"
+            [loadingIndicator]="loading"
+            (sort)="onSort($event)"
+          >
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,32 @@
+<main role="main">
+  <section class="jumbotron text-center bg-white">
+    <div class="container"><h1 class="jumbotron-heading" translate>TOP_YOUTUBE_LIVE_STREAMS</h1></div>
+  </section>
+
+  <div class="album py-5 bg-white">
+    <div class="container">
+      <app-loader [isLoading]="isLoading"></app-loader>
+
+      <div class="row" *ngIf="liveStreams">
+        <div class="col-md-4" *ngFor="let stream of liveStreams; let i = index">
+          <div class="card mb-4 shadow-sm">
+            <img
+              [src]="stream.thumbnails.medium.url"
+              *ngIf="stream.thumbnails"
+              class="bd-placeholder-img card-img-top"
+            />
+            <div class="card-body">
+              <h6 class="card-text">{{ stream.title }}</h6>
+              <div class="d-flex justify-content-between align-items-center mt-4">
+                <div class="btn-group">
+                  <a [routerLink]="['/stream/', stream.id]" class="btn btn-sm btn-primary" translate>ACTION_VIEW</a>
+                </div>
+                <small class="text-muted">{{ stream.publishedAt | date: 'medium' }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
