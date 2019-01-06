@@ -26,10 +26,10 @@ The functionality is described in details
   - [Django Rest Framework](https://www.django-rest-framework.org/) is used to provide rest api support.
   - [Django All Auth](https://github.com/pennersr/django-allauth) and [Django Rest Auth](https://django-rest-auth.readthedocs.io/en/latest/) is used to handle authentication using google account as well as post login, JWT based data access.
   - There are mainly three rest APIs developed.
-    - [/api/youtube/livestream/]() - Gets the top livestreams from youtube
-    - [/api/youtube/stats/]() - Stats and analysis api for live streaming. Returns the stats including sender and total number of messages sent
+    - [/api/youtube/livestream/](http://sv.nikhilnavadiya.in/api/youtube/livestream/) - Gets the top livestreams from youtube
+    - [/api/youtube/stats/](http://sv.nikhilnavadiya.in/api/youtube/stats/) - Stats and analysis api for live streaming. Returns the stats including sender and total number of messages sent
       for given stream.
-    - [/api/youtube/stream-chat]() - Gets all the chat messages for give stream. Allows to filter by sender (user)
+    - [/api/youtube/stream-chat/](http://sv.nikhilnavadiya.in/api/youtube/stream-chat/) - Gets all the chat messages for give stream. Allows to filter by sender (user)
 
 #### How to setup frontend:
 
