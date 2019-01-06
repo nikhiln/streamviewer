@@ -57,7 +57,8 @@ export class StreamComponent implements OnInit {
       }
 
       if (data['type'] === 'new_message') {
-        this.messages.push(data['message']);
+        if (data['message']['liveStreamId'] === this.streamId)
+          this.messages.push(data['message']);
       }
     });
 
