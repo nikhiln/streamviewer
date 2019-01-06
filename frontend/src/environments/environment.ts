@@ -11,7 +11,7 @@ export const environment = {
   serverUrl: 'http://localhost:8000/api',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
-  googleDeveloperKey: '376307004952-17orictfoec28jojf41hbtkltujgnm65.apps.googleusercontent.com',
+  googleDeveloperKey: '',
   webSocketServerUrl: 'ws://localhost:8000/ws/chat/'
 };
 
