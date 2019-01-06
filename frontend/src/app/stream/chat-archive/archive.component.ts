@@ -39,7 +39,9 @@ export class StreamChatArchiveComponent implements OnInit {
 
       // auto data refresh
       this.interval = setInterval(() => {
-        this.getAllChatMessages();
+        if (this.authService.isAuthenticated()) {
+          this.getAllChatMessages();
+        }
       }, 10000);
     });
 
@@ -55,6 +57,7 @@ export class StreamChatArchiveComponent implements OnInit {
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
+    clearInterval(this.interval);
   }
 
   /**
