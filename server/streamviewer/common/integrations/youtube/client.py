@@ -40,9 +40,11 @@ class YoutubeAPI(object):
                 eventType="live",
                 type="video",
                 order=order,
+                regionCode='US',
                 relevanceLanguage=relevance_language
             ).execute()
             videos = []
+            print(search_response)
             # get the result and return data
             for search_item in search_response.get('items', []):
                 video = {'id': search_item.get('id', {}).get('videoId')}
