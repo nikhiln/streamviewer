@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map, catchError} from 'rxjs/operators';
 
-import { SocialUser } from 'angularx-social-login';
-import { AuthService } from 'angularx-social-login';
+import {SocialUser} from 'angularx-social-login';
+import {AuthService} from 'angularx-social-login';
 
 export interface GoogleLoginContext {
   access_token: string;
@@ -12,7 +12,8 @@ export interface GoogleLoginContext {
 }
 
 const ROUTES = {
-  AUTH_GOOGLE: '/rest-auth/google/'
+  AUTH_GOOGLE: '/rest-auth/google/',
+  AUTH_LOGOUT: '/rest-auth/logout/'
 };
 
 export interface Credentials {
@@ -45,7 +46,7 @@ export class AuthenticationService {
    */
   loginWithGoogle(socialUser: SocialUser): Observable<boolean> {
     // calling server side auth
-    const loginContext: GoogleLoginContext = { access_token: socialUser.authToken };
+    const loginContext: GoogleLoginContext = {access_token: socialUser.authToken};
 
     return this.httpClient.post(ROUTES.AUTH_GOOGLE, loginContext, {}).pipe(
       map((body: any) => {
@@ -65,9 +66,20 @@ export class AuthenticationService {
     this.setCredentials();
     this.socialAuthService
       .signOut()
-      .then(() => {})
-      .catch(function(e) {});
+      .then(() => {
+      })
+      .catch(function (e) {
+      });
+    this.logoutOnServer();
+    // login out from server as well
     return of(true);
+  }
+
+  /**
+   * Logout on SV server
+   */
+  logoutOnServer() {
+    this.httpClient.post(ROUTES.AUTH_LOGOUT, {}).subscribe(data => {});
   }
 
   /**
@@ -109,7 +121,7 @@ export class AuthenticationService {
    */
   private setCredentials(socialUser?: SocialUser, auth?: string, remember?: boolean) {
     if (socialUser && auth) {
-      this._credentials = { socialUser: socialUser, key: auth['token'], user: auth['user'] };
+      this._credentials = {socialUser: socialUser, key: auth['token'], user: auth['user']};
     } else {
       this._credentials = null;
     }

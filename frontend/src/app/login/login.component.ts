@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
         this.loggedIn = this.user != null;
       })
       .catch(function(e) {});
+
+    this.authenticationService.logoutOnServer();
   }
 
   /**
